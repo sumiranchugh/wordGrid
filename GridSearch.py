@@ -17,8 +17,10 @@ def main():
     while startX <= 3 and startY <= 3:
         letter = grid[i][j]
         word += letter
+        print(word)
         if add_valid_word(dictionary, result, word):
             word =''
+            dir = -1
             if startX == 3:
                 startY +=1
                 startX = 0
@@ -40,7 +42,7 @@ def main():
                 dir = 0
         else:
             word = word[:-1]
-            if len(word) == 0 or dir ==-1:
+            if len(word) == 0 or dir == -1:
                 if startX == 3:
                     startY += 1
                     startX = 0
@@ -51,16 +53,19 @@ def main():
                 j = startX
                 continue
             if dir == 0:
-                j += 1
-                dir = 1
+                if startY - j == 0:
+                    j += 1
+                    dir = 1
+
             else :
                 if dir == 1:
-                    i += 1
-                    dir = -1
+                    if startX - i ==0:
+                        i += 1
+                    else:
+                        word =''
+                        dir = -1
 
-    print(startX)
-    print(startY)
-
+    print(result)
 
 
 
