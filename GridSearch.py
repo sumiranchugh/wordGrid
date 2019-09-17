@@ -26,12 +26,7 @@ def main():
         if add_valid_word(dictionary, result, word):
             word =''
             dir = -1
-            if startX == 3:
-                startY +=1
-                startX = 0
-            else:
-                startX += 1
-                ##startY = 0
+            startX, startY = calcStart(startX, startY)
             i = startY
             j = startX
             continue
@@ -48,12 +43,7 @@ def main():
         else:
             word = word[:-1]
             if len(word) == 0 or dir == -1:
-                if startX == 3:
-                    startY += 1
-                    startX = 0
-                else:
-                    startX += 1
-                    ##startY = 0
+                startX, startY = calcStart(startX, startY)
                 i = startY
                 j = startX
                 continue
@@ -72,6 +62,16 @@ def main():
                         dir = -1
 
     print(result)
+
+
+def calcStart(startX, startY):
+    if startX == 3:
+        startY += 1
+        startX = 0
+    else:
+        startX += 1
+        ##startY = 0
+    return startX, startY
 
 
 def process_input():
