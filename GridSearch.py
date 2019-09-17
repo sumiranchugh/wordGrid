@@ -3,17 +3,22 @@ from Dictionary import Dictionary
 path = 'words.text'
 
 
+def validate(inp):
+    if len(inp) < 16:
+        print "input grid should length 16"
+        exit(1)
+
+
 def main():
     dictionary = Dictionary(path)
-    inp = str(raw_input('enter the 4*4 grid'))
-    grid = [inp[0:4], inp[4:8], inp[8:12], inp[12:16]]
+    grid = process_input()
     word = ''
     result = []
     i =0
-    j=0
+    j= 0
     dir = -1
     startX= 0
-    startY=0
+    startY= 0
     while startX <= 3 and startY <= 3:
         letter = grid[i][j]
         word += letter
@@ -26,7 +31,6 @@ def main():
                 startX = 0
             else:
                 startX += 1
-                ##startY = 0
             i = startY
             j = startX
             continue
@@ -68,9 +72,11 @@ def main():
     print(result)
 
 
-
-
-
+def process_input():
+    inp = str(raw_input('enter the 4*4 grid in a line'))
+    validate(inp)
+    grid = [inp[0:4], inp[4:8], inp[8:12], inp[12:16]]
+    return grid
 
 
 def add_valid_word(dictionary, result, word):
