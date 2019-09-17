@@ -22,7 +22,7 @@ def main():
     while startX <= 3 and startY <= 3:
         letter = grid[i][j]
         word += letter
-        print(word)
+        # print(word)
         if add_valid_word(dictionary, result, word):
             word =''
             dir = -1
@@ -31,6 +31,7 @@ def main():
                 startX = 0
             else:
                 startX += 1
+                ##startY = 0
             i = startY
             j = startX
             continue
@@ -59,7 +60,8 @@ def main():
             if dir == 0:
                 if startY - j == 0:
                     j += 1
-                    dir = 1
+
+                dir = 1
 
             else :
                 if dir == 1:
